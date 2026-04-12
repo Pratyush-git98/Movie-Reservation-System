@@ -1,0 +1,28 @@
+{
+  "name": "movie-reservation-system",
+  "version": "1.0.0",
+  "description": "Movie reservation system",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pratyush-git98/Movie-Reservation-System.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pratyush-git98/Movie-Reservation-System/issues"
+  },
+  "homepage": "https://github.com/Pratyush-git98/Movie-Reservation-System#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.4.1",
+    "nodemon": "^3.1.14"
+  }
+}
