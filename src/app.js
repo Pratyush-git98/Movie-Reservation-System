@@ -1,16 +1,20 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import cors from 'cors';
 
-dotenv.config();
 
 const app = express();
 
+app.get("/", (req, res) => {
+    res.send("Welcome to the Movie Reservation System API!");
+});
+
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
+    credentials: true,
 }));
 
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true , limit: "16kb" }));
+app.use(express.static('public'));
 
 export default app
