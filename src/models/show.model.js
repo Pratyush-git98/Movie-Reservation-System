@@ -22,12 +22,12 @@ const showSchema = new mongoose.Schema({
     totalSeats: {
         type: Number,
     },
-    bookedSeats: [Number],
+    bookedSeats: [String],
     ticketPrice: {
         type: Number
     },
     isActive : {
-        type: boolean,
+        type: Boolean,
         default: false
     }
 
