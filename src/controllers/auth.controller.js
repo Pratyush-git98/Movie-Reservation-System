@@ -35,7 +35,7 @@ const register = asyncHandler(async (req, res) => {
         role: role === 'admin' ? 'admin' : 'user'
     });
 
-    const token = generateToken({ user});
+    const token = generateToken({ user });
 
     const userResponse = {
         id: user._id,

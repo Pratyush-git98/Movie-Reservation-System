@@ -7,7 +7,7 @@ const errorMiddleware = (err, req, res, next) => {
         message = `Resource not found. Invalid: ${err.path}: ${err.value}`;
     }
 
-    if (err==="MongoError" || err.code === 11000) {
+    if (err === "MongoError" || err.code === 11000) {
         statuscode = 400;
         const field = Object.keys(err.keyValue)[0];
         message = `Duplicate field value entered for ${field}: ${err.keyValue[field]}. Please use another value!`;
@@ -46,4 +46,4 @@ const errorMiddleware = (err, req, res, next) => {
     });
 }
 
-export {errorMiddleware}
+export { errorMiddleware }
