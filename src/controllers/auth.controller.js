@@ -78,20 +78,7 @@ const login = asyncHandler(async (req, res) => {
     );
 });
 
-const getMe = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.user.id).select('-password');
-
-    if (!user) {
-        throw new apiError(404, 'User not found');
-    }
-
-    res.status(200).json(
-        new apiResponse(200, { user }, 'User found')
-    );
-});
-
 export default {
     register,
-    login,
-    getMe
+    login
 };
