@@ -11,9 +11,6 @@ const generateToken = async (userId) => {
 }
 
 const register = asyncHandler(async (req, res) => {
-    // if (!req.body || Object.keys(req.body).length === 0) {
-    //     throw new apiError(400, 'Request body is empty');
-    // }
 
     const { name, email, password, role } = req.body;
 
