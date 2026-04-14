@@ -47,7 +47,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     );
 });
 
-export default {
+export {
     getAllUsers,
     getUserProfile,
     updateUserProfile
