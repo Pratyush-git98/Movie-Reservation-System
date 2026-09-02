@@ -23,7 +23,11 @@ const createTheater = asyncHandler(async (req, res) => {
 });
 
 const getAllTheaters = asyncHandler(async (req, res) => {
-    const theaters = await Theatre.find();
+    const { city } = req.query;
+    const filter = {};
+    if (city) filter.city = city;
+
+    const theaters = await Theatre.find(filter);
     return res
         .status(200)
         .json(new apiResponse(200, theaters, "Theaters fetched successfully"));

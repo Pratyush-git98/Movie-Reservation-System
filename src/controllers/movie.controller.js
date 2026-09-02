@@ -33,15 +33,29 @@ const createMovie = asyncHandler(async (req, res) => {
 });
 
 const getAllMovies = asyncHandler(async (req, res) => {
-    const movies = await Movie.find({ isActive: true });
+    const { genre, language, page = 1, limit = 10 } = req.query;
+    const filter = {isActive: true};
 
-    if (movies.length === 0) {
-        throw new apiError(404, 'No movies found');
-    }
+    if (genre) filter.genre = { $in: Array.isArray(genre) ? genre : [genre] };
+    if (language) filter.language = language;
+    console.log(filter);
+
+    const skip = (page - 1) * limit;
+
+    const [movies, total] = await Promise.all([
+        Movie.find(filter).skip(skip).limit(parseInt(limit)).sort({ createdAt: -1 }),
+        Movie.countDocuments(filter)
+    ]);
+
+    const pagination = {
+        total,
+        page: parseInt(page),
+        pages: Math.ceil(total / parseInt(limit)),
+    };
 
     return res
         .status(200)
-        .json(new apiResponse(200, movies, 'Movies retrieved successfully'));
+        .json(new apiResponse(200, movies, pagination, 'Movies retrieved successfully'));
 });
 
 const getMovieById = asyncHandler(async (req, res) => {
