@@ -26,6 +26,12 @@ const createMovie = asyncHandler(async (req, res) => {
         posterUrl
     });
 
+    const movies = await Movie.find({});
+    for (const m of movies) {
+        m.genre = m.genre.flatMap(g => g.split(',').map(s => s.trim().toLowerCase()));
+        await m.save();
+    }
+
     return res
         .status(201)
         .json(new apiResponse(201, movie, 'Movie created successfully'));
@@ -34,7 +40,7 @@ const createMovie = asyncHandler(async (req, res) => {
 
 const getAllMovies = asyncHandler(async (req, res) => {
     const { genre, language, page = 1, limit = 10 } = req.query;
-    const filter = {isActive: true};
+    const filter = { isActive: true };
 
     if (genre) filter.genre = { $in: Array.isArray(genre) ? genre : [genre] };
     if (language) filter.language = language;

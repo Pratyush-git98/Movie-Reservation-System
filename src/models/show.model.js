@@ -6,9 +6,9 @@ const showSchema = new mongoose.Schema({
         ref: 'Movie',
         required: true
     },
-    theater: {
+    theatre: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Theater',
+        ref: 'Theatre',
         required: true
     },
     showTime: {

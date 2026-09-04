@@ -24,7 +24,7 @@ app.use(cookieParser());
 import authRoutes from './routes/auth.route.js';
 import userRoutes from './routes/user.route.js';
 import movieRoutes from './routes/movie.route.js';
-// import showRoutes from './routes/show.route.js';
+import showRoutes from './routes/show.route.js';
 import theatreRoutes from './routes/theatre.route.js';
 // import bookingRoutes from './routes/booking.route.js';
 
@@ -34,7 +34,7 @@ const apiBasePath = '/api/v1';
 app.use(`${apiBasePath}/auth`, authRoutes);
 app.use(`${apiBasePath}/users`, userRoutes);
 app.use(`${apiBasePath}/movies`, movieRoutes);
-// app.use(`${apiBasePath}/shows`, showRoutes);
+app.use(`${apiBasePath}/shows`, showRoutes);
 app.use(`${apiBasePath}/theatres`, theatreRoutes);
 // app.use(`${apiBasePath}/bookings`, bookingRoutes);
 
