@@ -26,7 +26,7 @@ import userRoutes from './routes/user.route.js';
 import movieRoutes from './routes/movie.route.js';
 import showRoutes from './routes/show.route.js';
 import theatreRoutes from './routes/theatre.route.js';
-// import bookingRoutes from './routes/booking.route.js';
+import bookingRoutes from './routes/booking.route.js';
 
 // Route declarations
 const apiBasePath = '/api/v1';
@@ -36,7 +36,7 @@ app.use(`${apiBasePath}/users`, userRoutes);
 app.use(`${apiBasePath}/movies`, movieRoutes);
 app.use(`${apiBasePath}/shows`, showRoutes);
 app.use(`${apiBasePath}/theatres`, theatreRoutes);
-// app.use(`${apiBasePath}/bookings`, bookingRoutes);
+app.use(`${apiBasePath}/bookings`, bookingRoutes);
 
 // Error handling middleware
 app.use(errorMiddleware);
